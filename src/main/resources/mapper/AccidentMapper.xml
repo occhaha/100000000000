@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.team4.dao.AccidentMapper">
+
+
+    <insert id="saveAccident" parameterType="com.team4.entity.Accident">
+        insert into Accident values (#{accid},#{time},#{carid},#{type},#{listid},#{personid},#{addr},#{text})
+    </insert>
+
+    <delete id="deleteAccident" parameterType="string">
+        delete from Accident where accid=#{accid}
+    </delete>
+
+    <update id="updateAccident" parameterType="com.team4.entity.Accident">
+        update Accident set time=#{time},carid=#{carid},type=#{type},listid=#{listid},personid=#{personid},addr=#{addr},text=#{text} where accid=#{accid}
+    </update>
+
+    <select id="findAccidentById" parameterType="string" resultType="com.team4.entity.Accident">
+        select accid accid,time time,carid carid,type type,listid listid,personid personid,addr addr,text text from Accident where accid=#{accid}
+    </select>
+
+    <select id="findAccidentByTime" parameterType="string" resultType="com.team4.entity.Accident">
+        select accid accid,time time,carid carid,type type,listid listid,personid personid,addr addr,text text from Accident where time=#{time}
+    </select>
+
+    <select id="findAllAccident" resultType="com.team4.entity.Accident">
+        select * from Accident
+    </select>
+
+</mapper>
